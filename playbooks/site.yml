@@ -1,0 +1,11 @@
+---
+- name: Apply common configuration to all servers
+  hosts: all
+  become: true
+  vars_files:
+    - ../../vars/main.yml
+  roles:
+    - server_setup
+    - install_packages
+    - configure_network
+    - secure_access

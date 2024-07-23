@@ -1,0 +1,21 @@
+---
+- name: Set the hostname
+  template:
+    src: hostname.j2
+    dest: /etc/hostname
+
+- name: Apply the new hostname
+  command: hostnamectl set-hostname {{ ansible_hostname }}
+
+- name: Ensure sudo group is present
+  group:
+    name: sudo
+    state: present
+
+- name: Ensure sudo user is present
+  user:
+    name: deploy
+    groups: sudo
+    state: present
+    shell: /bin/bash
+    createhome: yes

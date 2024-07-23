@@ -1,0 +1,11 @@
+common_packages:
+  - git
+  - vim
+  - curl
+
+dev_hostname: "dev-{{ inventory_hostname }}"
+stage_hostname: "stage-{{ inventory_hostname }}"
+prod_hostname: "prod-{{ inventory_hostname }}"
+
+authorized_keys:
+  - "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAr..."

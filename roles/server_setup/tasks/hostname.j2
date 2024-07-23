@@ -1,0 +1,7 @@
+{% if 'dev' in inventory_dir %}
+{{ dev_hostname }}
+{% elif 'stage' in inventory_dir %}
+{{ stage_hostname }}
+{% elif 'prod' in inventory_dir %}
+{{ prod_hostname }}
+{% endif %}

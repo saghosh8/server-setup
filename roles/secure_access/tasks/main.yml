@@ -1,0 +1,15 @@
+---
+- name: Configure firewall rules
+  firewalld:
+    service: ssh
+    permanent: true
+    state: enabled
+
+- name: Reload firewalld to apply changes
+  command: firewall-cmd --reload
+
+- name: Add SSH authorized keys for deploy user
+  authorized_key:
+    user: deploy
+    key: "{{ item }}"
+  with_items: "{{ authorized_keys }}"
